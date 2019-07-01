@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.1.2 - 07/1/2019
+## 1.2.0 - 07/1/2019
 
 -   Added keepalive http/s sockets [ENG-948](https://abedev.atlassian.net/browse/ENG-948)
 
