@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.0 - 07/3/2019
+
+-   Added timer class and added querystring to request lib [ENG-961](https://abedev.atlassian.net/browse/ENG-961)
+
 ## 1.2.0 - 07/1/2019
 
 -   Added keepalive http/s sockets [ENG-948](https://abedev.atlassian.net/browse/ENG-948)
