@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/abeai/node-utils#readme",
   "dependencies": {
-    "eslint": "5.16.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-security": "1.4.0",
     "pg": "7.11.0",
     "pg-native": "3.0.0",
