@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## 1.4.0 - 07/8/2019
 
--   Added deep merge function [ENG-967](https://abedev.atlassian.net/browse/ENG-967)
+-   Added deep merge function and get [ENG-967](https://abedev.atlassian.net/browse/ENG-967)
 
 ## 1.3.0 - 07/3/2019
 
