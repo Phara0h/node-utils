@@ -5,7 +5,7 @@ var nodeUtils = function() {
     this.cloneDeep = _clone.cloneDeep;
     this.clone = _clone.clone;
 
-    this.merge = require('./lib/merge');
+    this.merge = _clone.merge;
 
     this.get = require('./lib/get')
 
