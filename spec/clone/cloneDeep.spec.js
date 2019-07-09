@@ -27,12 +27,6 @@ describe('cloneDeep', () => {
             const output = utils.cloneDeep(input);
 
             expect(output).toEqual(input);
-            expect(output).toEqual(input);
-            expect(output.a).toEqual(input.a);
-            expect(output.a.b).toEqual(input.a.b);
-            expect(output.a.b.c).toEqual(input.a.b.c);
-            expect(output.a.b.c[0].d).toEqual(input.a.b.c[0].d);
-            expect(output.a.b.c[0].d.e).toEqual(input.a.b.c[0].d.e);
         });
 
         it('returns an object with not the exact same properties', async () => {
