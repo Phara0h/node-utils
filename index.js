@@ -5,6 +5,10 @@ var nodeUtils = function() {
     this.cloneDeep = _clone.cloneDeep;
     this.clone = _clone.clone;
 
+    this.merge = _clone.merge;
+
+    this.get = require('./lib/get')
+
     this.PGConnecter = require('./lib/postgres/PGConnecter');
     this.PGBaseModel = require('./lib/postgres/PGBaseModel');
     this.PGEncryptModel = require('./lib/postgres/PGEncryptModel');
