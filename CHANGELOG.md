@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.5.0 - 07/12/2019
+
+-   Updated request error response to not have circular references. [CC-127](https://abedev.atlassian.net/browse/CC-127)
+
 ## 1.4.0 - 07/8/2019
 
 -   Added deep merge function and get [ENG-967](https://abedev.atlassian.net/browse/ENG-967)
