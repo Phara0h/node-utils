@@ -1,8 +1,10 @@
 
 const BaseModel = require('../../../../lib/postgres/PGActiveModel.js');
 const Base = require('../../../../lib/postgres/Base.js');
+const PGTypes = require('../../../../lib/postgres/PGTypes.js');
+
 class User extends Base(BaseModel, 'users',   {
-      id: 'PK',
+      id: PGTypes.PK,
       username: null,
       password: null,
       email: null,
