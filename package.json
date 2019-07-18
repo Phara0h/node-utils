@@ -1,13 +1,13 @@
 {
   "name": "@abeai/node-utils",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --coverage --verbose"
   },
   "repository": {
     "type": "git",

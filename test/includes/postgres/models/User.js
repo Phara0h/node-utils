@@ -1,22 +1,25 @@
-'use strict';
-const BaseModel = require('../../../../lib/postgres/PGBaseModel.js');
 
-class User extends BaseModel {
+const BaseModel = require('../../../../lib/postgres/PGBaseModel.js');
+const Base = require('../../../../lib/postgres/Base.js');
+const PGTypes = require('../../../../lib/postgres/PGTypes.js');
+
+class User extends Base(BaseModel, 'users',
+    {
+        id: PGTypes.PK,
+        username: null,
+        password: null,
+        email: null,
+        created_on: null,
+        last_login: null,
+    }) {
+
     constructor() {
-        super('users',
-            {
-                id: 'PK',
-                username: null,
-                password: null,
-                email: null,
-                created_on: null,
-                last_login: null,
-            });
+        super();
     }
 
-    async createUserWithRandomName(model) {
+    static async createUserWithRandomName(model) {
         model.username = 'user' + Math.floor(Math.random() * 1000);
-        return await super.create(model);
+        return await this.create(model);
     }
 }
 
