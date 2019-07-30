@@ -7,12 +7,19 @@ class User extends Base(BaseModel, 'users', {
       id: PGTypes.PK,
       username: null,
       password: null,
+      encrypted_profile: PGTypes.EncryptProfile,
+      hashed_password: PGTypes.Hash,
+      phone: PGTypes.Encrypt,
+      auto_phone: PGTypes.AutoCrypt,
+      memes: PGTypes.EncryptWithoutHash,
+      auto_memes: PGTypes.AutoCryptWithoutHash,
       email: null,
       created_on: null,
       last_login: null,
   }) {
-    constructor(setUser) {
-      super(setUser);
+    constructor(setUser, encryptProfile) {
+      super(setUser, encryptProfile);
+
     }
 
     static async createUserWithRandomName(model) {

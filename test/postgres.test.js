@@ -5,6 +5,9 @@ describe('Postgres', () => {
     var pg = new PGConnecter({
         connectionString: 'postgres://postgres@localhost/pgtest',
     });
+
+    const AgentDek = require('@abeai/node-crypto').AgentDek;
+    const hash = require('@abeai/node-crypto').hash;
     var User = require('./includes/postgres/models/User');
     var UserAD = require('./includes/postgres/models/UserAD');
 
@@ -19,6 +22,14 @@ describe('Postgres', () => {
                          id serial PRIMARY KEY,
                          username VARCHAR (50),
                          password VARCHAR (50),
+                         encrypted_profile VARCHAR (500),
+                         hashed_password VARCHAR (500),
+                         phone VARCHAR (500),
+                         __phone VARCHAR (500) UNIQUE,
+                         auto_phone VARCHAR (500),
+                         __auto_phone VARCHAR (500) UNIQUE,
+                         memes VARCHAR (500),
+                         auto_memes VARCHAR (500),
                          email VARCHAR (355) ,
                          created_on TIMESTAMP,
                          last_login TIMESTAMP
@@ -62,15 +73,15 @@ describe('Postgres', () => {
                 expect(user2[0].password).toBe('ilikememes');
             });
 
-            test('Create user 3 with 3 properties static [create()]', async ()=>{
+            test('Create user 3 with 4 properties static with encrypt field [create()]', async ()=>{
                 user3 = await User.create(
                     {
                         username: 'user3',
                         password: 'ilovemothers',
-                        email: 'motherlover@hornpub.com',
+                        email: 'motherlover@lel.com'
                     });
 
-                expect(user3[0].email).toBe('motherlover@hornpub.com');
+                expect(user3[0].email).toBe('motherlover@lel.com');
             });
 
             test('Create user with random name; custom class method [.createUserWithRandomName()]', async ()=>{
@@ -176,13 +187,13 @@ describe('Postgres', () => {
             test('Delete by property static [deleteAllBy()]', async ()=>{
                 var deletedUsers = await User.deleteAllBy(
                     {
-                        email: 'motherlover@hornpub.com',
+                        email: 'motherlover@lel.com',
                     });
 
                 expect(deletedUsers).toEqual(
                     expect.arrayContaining([
                         expect.objectContaining({
-                            email: 'motherlover@hornpub.com',
+                            email: 'motherlover@lel.com',
                         })
                     ])
                 );
@@ -203,6 +214,7 @@ describe('Postgres', () => {
         var user1 = null;
         var user2 = null;
         var user3 = null;
+        var user4 = null;
 
         describe('Create', () => {
             test('Instantiate 3 users', () => {
@@ -219,24 +231,22 @@ describe('Postgres', () => {
                 expect(user1.username).toBe('user1');
             });
 
-            test('Create user 2 with 2 properties static [create()]', async ()=>{
-                user2 = await UserAD.create(
-                    {
-                        username: 'user2',
-                        password: 'ilikememes',
-                    });
-
+            test('Create user 2 with 2 properties Instantiate [.create()]', async ()=>{
+                user2 = new UserAD({
+                    username: 'user2',
+                    password: 'ilikememes'});
+                await user2.create();
                 expect(user2.password).toBe('ilikememes');
             });
 
-            test('Create user 3 with 3 properties static [create()]', async ()=>{
+            test('Create user 3 with 3 properties static  [create()]', async ()=>{
                 user3 = await UserAD.create(
                     {
                         username: 'user3',
                         password: 'ilovemothers',
-                        email: 'motherlover@hornpub.com',
+                        email: 'motherlover@lel.com'
                     });
-                expect(user3.email).toBe('motherlover@hornpub.com');
+                expect(user3.email).toBe('motherlover@lel.com');
             });
 
             test('Create user with random name; custom class method [.createUserWithRandomName()]', async ()=>{
@@ -324,8 +334,8 @@ describe('Postgres', () => {
                     ])
                 );
             });
-        });
 
+        });
         describe('Delete', () => {
             test('Delete user1 [.delete()]', async ()=>{
 
@@ -337,10 +347,10 @@ describe('Postgres', () => {
             test('Delete by property static [deleteAllBy()]', async ()=>{
                 var deletedUsers = await UserAD.deleteAllBy(
                     {
-                        email: 'motherlover@hornpub.com',
+                        email: 'motherlover@lel.com',
                     });
 
-                expect(deletedUsers[0].email).toBe('motherlover@hornpub.com');
+                expect(deletedUsers[0].email).toBe('motherlover@lel.com');
             });
 
             test('Delete All static [deleteAll()]', async ()=>{
@@ -350,6 +360,225 @@ describe('Postgres', () => {
                 expect(users.length).toBe(0);
             });
         });
+
+        if (process.env.CRYPTO_SETTINGS_FILE) {
+            describe('Encryption', ()=>{
+
+                describe('Create', () => {
+                    test('Instantiate 5 users', () => {
+                        user1 = new UserAD();
+                        user2 = new UserAD();
+                        user3 = new UserAD();
+                        user4 = new UserAD();
+                        user5 = new UserAD();
+                        expect(user1 != null && user2 != null && user3 != null && user4 != null && user5 != null).toBe(true);
+                    });
+
+                    test('Create user 1 with 4 property with encrypted property & encrypted without lookup hash property with no encrypted profile set [.create()]', async ()=>{
+                        user1.username = 'user1';
+                        user1.phone = '1231231234';
+                        user1.memes = 'awkward penguin';
+                        user1.auto_phone = '1231231234';
+                        await user1.create();
+
+                        expect(user1.memes).not.toBe('awkward penguin');
+                    });
+
+                    test('Create user 2 with 3 properties Instantiate with encrypted property and setting encryptedProfile [.create()]', async ()=>{
+                        user2 = new UserAD({
+                            username: 'user2',
+                            password: 'ilikememes',
+                            phone: '12312312342'}, process.env.TEST_ALT_KMS_KEY);
+                        await user2.create();
+                        expect(user2.password).toBe('ilikememes');
+                    });
+
+                    test('Create user 3 with 6 properties static with encrypt field phone, hashed password and set encrypted_profile [create()]', async ()=>{
+                        user3 = await UserAD.create(
+                            {
+                                username: 'user3',
+                                password: 'ilovemothers',
+                                hashed_password: 'hashmebro',
+                                encrypted_profile: process.env.TEST_ALT_KMS_KEY,
+                                email: 'motherlover@lel.com',
+                                auto_memes: 'memer900',
+                                phone: '1231231235'
+                            });
+                        expect(user3.email).toBe('motherlover@lel.com');
+                    });
+
+                    test('Create user 4 with 5 properties static with encrypt field phone, hashed password and and set encrypted_profile with encryption off [create()]', async ()=>{
+                        AgentDek.encryption = false;
+                        user4 = await UserAD.create(
+                            {
+                                username: 'user4',
+                                hashed_password: 'hashmebro',
+                                encrypted_profile: process.env.TEST_ALT_KMS_KEY,
+                                email: 'motherlover@lel.com',
+                                phone: '1231231234'
+                            });
+                        expect(user4).toEqual(expect.objectContaining({
+                            hashed_password: 'hashmebro',
+                            phone: '1231231234'
+                        }));
+                        AgentDek.encryption = true;
+                    });
+
+                    test('Create user 5 with 3 properties Instantiate with auto crypt property and auto crypt without hash property [.create()]', async ()=>{
+                        user5 = new UserAD({
+                            username: 'user5',
+                            memes: 'awkward penguin',
+                            auto_memes: 'canihazmemesplz',
+                            auto_phone: '12312312342'});
+                        await user5.create();
+
+                        expect(user5).toEqual(expect.objectContaining({
+                            auto_memes: 'canihazmemesplz',
+                            auto_phone: '12312312342'
+                        }));
+                    });
+                });
+
+                describe('Find', () => {
+                    test('Find user by id and check hashed_password [.find()]', async ()=>{
+                        var fUser = new UserAD();
+
+                        fUser.id = user3.id;
+
+                        await fUser.find();
+                        var hp = fUser.hashed_password;
+
+                        fUser.hashed_password = 'hashmebro';
+
+                        var rehashedHP = (await fUser.encrypt('hashed_password')).hashed_password;
+
+                        expect(hp).toBe(rehashedHP);
+                    });
+
+                    test('Find user by id static and check auto decryption [.findById()]', async ()=>{
+                        var fUser = await UserAD.findById(user5.id);
+
+                        expect(fUser).toEqual(expect.objectContaining({
+                            auto_memes: 'canihazmemesplz',
+                            auto_phone: '12312312342'
+                        }));
+                    });
+
+                    test('Find all by auto crypted phone static with default profile [findAllBy()]', async ()=>{
+                        var fUser = await UserAD.findAllBy(
+                            {
+                                auto_phone: ['12312312342', 'OR', '1231231234']
+                            });
+
+                        expect(fUser).toEqual(
+                            expect.arrayContaining([
+                                expect.objectContaining({
+                                    auto_phone: '12312312342'
+                                }),
+                                expect.objectContaining({
+                                    auto_phone: '1231231234'
+                                })
+                            ]));
+                    });
+
+                    test('Find all by auto crypted phone static with set profile [findAllBy()]', async ()=>{
+                        var fUser = await UserAD.findAllBy(
+                            {
+                                phone: ['1231231235', 'OR', '12312312342'],
+                                encrypted_profile: process.env.TEST_ALT_KMS_KEY
+                            }, 'AND');
+
+                        expect(fUser).toEqual(
+                            expect.arrayContaining([
+                                expect.objectContaining({
+                                    username: 'user2'
+                                }),
+                                expect.objectContaining({
+                                    auto_memes: 'memer900'
+                                })
+                            ]));
+                    });
+
+                    test('Find all by multiple properties query static [findAllBy()]', async ()=>{
+                        var fUser = await UserAD.findAllBy(
+                            {
+                                username: ['user2', 'OR', 'user3'],
+                                email: null,
+                            }, 'AND');
+
+                        expect(fUser[0].username).toBe('user2');
+                    });
+                });
+
+                describe('Update', () => {
+                    test('Update user 3 password [.save()]', async ()=>{
+                        user3.password = 'password123';
+                        user3.save();
+
+                        expect(user3).toEqual(expect.objectContaining({
+                            password: 'password123'
+                        }));
+                    });
+
+                    test('Update all users that have no passwords static [updateAllBy()]', async ()=>{
+
+                        var updatedUsers = await UserAD.updateAllBy({password: null}, {password: 'bestpasswordinalltheland12346969420'});
+
+                        expect(updatedUsers).toEqual(
+                            expect.arrayContaining([
+                                expect.objectContaining({
+                                    password: 'bestpasswordinalltheland12346969420'
+                                })
+                            ])
+                        );
+                    });
+
+                    test('Update All with last_login date static [updateAll()]', async ()=>{
+                        var date = new Date();
+                        var updatedUsers = await UserAD.updateAll(
+                            {
+                                last_login: date,
+                            });
+
+                        expect(updatedUsers).toEqual(
+                            expect.arrayContaining([
+                                expect.objectContaining({
+                                    last_login: date,
+                                })
+                            ])
+                        );
+                    });
+                });
+                describe('Delete', () => {
+                    test('Delete user1 [.delete()]', async ()=>{
+
+                        await user1.delete();
+
+                        expect(user1.username).toBe(null);
+                    });
+
+                    test('Delete by property static [deleteAllBy()]', async ()=>{
+                        var deletedUsers = await UserAD.deleteAllBy(
+                            {
+                                email: 'motherlover@lel.com',
+                            });
+
+                        expect(deletedUsers[0].email).toBe('motherlover@lel.com');
+                    });
+
+                    test('Delete All static [deleteAll()]', async ()=>{
+                        await UserAD.deleteAll();
+                        var users = await UserAD.findAll();
+
+                        expect(users.length).toBe(0);
+                    });
+                });
+            });
+
+        } else {
+            describe('Encryption', ()=>{test.todo('Make .env to test encryption');});
+        }
+
     });
 
     test('Close connection', async ()=>{

@@ -7,7 +7,8 @@ var nodeUtils = function() {
 
     this.merge = _clone.merge;
 
-    this.get = require('./lib/get')
+    this.get = require('./lib/get');
+    this.isEmpty = require('./lib/isEmpty');
 
     this.PGTypes = require('./lib/postgres/PGTypes');
     this.PGConnecter = require('./lib/postgres/PGConnecter');
