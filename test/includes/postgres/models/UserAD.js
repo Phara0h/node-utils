@@ -1,3 +1,4 @@
+'use strict';
 
 const BaseModel = require('../../../../lib/postgres/PGActiveModel.js');
 const Base = require('../../../../lib/postgres/Base.js');
@@ -17,9 +18,8 @@ class User extends Base(BaseModel, 'users', {
       created_on: null,
       last_login: null,
   }) {
-    constructor(setUser, encryptProfile) {
-      super(setUser, encryptProfile);
-
+    constructor(...args) {
+      super(...args);
     }
 
     static async createUserWithRandomName(model) {

@@ -1,3 +1,4 @@
+'use strict';
 
 const BaseModel = require('../../../../lib/postgres/PGBaseModel.js');
 const Base = require('../../../../lib/postgres/Base.js');
