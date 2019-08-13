@@ -9,9 +9,12 @@ var nodeUtils = function() {
 
     this.get = require('./lib/get');
 
+    this.PGTypes = require('./lib/postgres/PGTypes');
     this.PGConnecter = require('./lib/postgres/PGConnecter');
+    this.Base = require('./lib/postgres/Base');
     this.PGBaseModel = require('./lib/postgres/PGBaseModel');
     this.PGEncryptModel = require('./lib/postgres/PGEncryptModel');
+    this.PGActiveModel = require('./lib/postgres/PGActiveModel');
 
     this.request = require('./lib/request');
 
