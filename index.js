@@ -7,7 +7,7 @@ var nodeUtils = function() {
 
     this.merge = _clone.merge;
 
-    this.get = require('./lib/get')
+    this.get = require('./lib/get');
 
     this.PGConnecter = require('./lib/postgres/PGConnecter');
     this.PGBaseModel = require('./lib/postgres/PGBaseModel');
@@ -18,6 +18,8 @@ var nodeUtils = function() {
     this.keysToCamel = require('./lib/camelCase');
 
     this.Timer = require('./lib/timer');
+
+    this.redaction = require('./lib/redaction');
 
     return this;
 }();

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.0 - 08/12/2019
+
+-   Added redaction logic. [ENG-996](https://abedev.atlassian.net/browse/ENG-996)
+
 ## 1.5.0 - 07/12/2019
 
 -   Updated request error response to not have circular references. [CC-127](https://abedev.atlassian.net/browse/CC-127)
