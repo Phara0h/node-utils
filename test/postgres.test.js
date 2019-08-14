@@ -2,12 +2,19 @@
 describe('Postgres', () => {
 
     var PGConnecter = require('..').PGConnecter;
-    var pg = new PGConnecter({
-        connectionString: 'postgres://postgres@localhost/pgtest',
-    });
+    var pgOptions = {
+      pg: {
+         connectionString: 'postgres://postgres@localhost/pgtest',
+      }
+    };
 
-    const AgentDek = require('@abeai/node-crypto').AgentDek;
-    const hash = require('@abeai/node-crypto').hash;
+    try {
+      pgOptions.crypto = require('@abeai/node-crypto').utils.pgCrypto;
+    } catch (_) {
+    }
+
+    var pg = new PGConnecter(pgOptions);
+
     var User = require('./includes/postgres/models/User');
     var UserAD = require('./includes/postgres/models/UserAD');
 
@@ -361,7 +368,7 @@ describe('Postgres', () => {
             });
         });
 
-        if (process.env.CRYPTO_SETTINGS_FILE) {
+
             describe('Encryption', ()=>{
 
                 describe('Create', () => {
@@ -380,8 +387,13 @@ describe('Postgres', () => {
                         user1.memes = 'awkward penguin';
                         user1.auto_phone = '1231231234';
                         await user1.create();
+                        if(await pg.options.crypto.isEncryptionEnabled()) {
+                          expect(user1.memes).not.toBe('awkward penguin');
+                        }
+                        else {
+                          expect(user1.memes).toBe('awkward penguin');
+                        }
 
-                        expect(user1.memes).not.toBe('awkward penguin');
                     });
 
                     test('Create user 2 with 3 properties Instantiate with encrypted property and setting encryptedProfile [.create()]', async ()=>{
@@ -408,7 +420,7 @@ describe('Postgres', () => {
                     });
 
                     test('Create user 4 with 5 properties static with encrypt field phone, hashed password and and set encrypted_profile with encryption off [create()]', async ()=>{
-                        AgentDek.encryption = false;
+
                         user4 = await UserAD.create(
                             {
                                 username: 'user4',
@@ -421,7 +433,7 @@ describe('Postgres', () => {
                             hashed_password: 'hashmebro',
                             phone: '1231231234'
                         }));
-                        AgentDek.encryption = true;
+
                     });
 
                     test('Create user 5 with 3 properties Instantiate with auto crypt property and auto crypt without hash property [.create()]', async ()=>{
@@ -574,10 +586,6 @@ describe('Postgres', () => {
                     });
                 });
             });
-
-        } else {
-            describe('Encryption', ()=>{test.todo('Make .env to test encryption');});
-        }
 
     });
 
