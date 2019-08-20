@@ -23,6 +23,8 @@ var nodeUtils = function() {
 
     this.Timer = require('./lib/timer');
 
+    this.redaction = require('./lib/redaction');
+
     return this;
 }();
 
