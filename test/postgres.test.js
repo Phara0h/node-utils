@@ -561,6 +561,24 @@ describe('Postgres', () => {
                         );
                     });
                 });
+
+                describe('Redact', () => {
+                    test('Redact user 1 [redactSensitiveData()]', async ()=>{
+
+                        user1.redactSensitiveData()
+
+                        expect(user1.auto_phone).toBe('[redacted]');
+                    });
+
+                    test('Redact user 2 [redactSensitiveDataSymbol()]', async ()=>{
+                        const redactSensitiveDataSymbol = require('..').redaction.redactSensitiveDataSymbol;
+
+                        user2[redactSensitiveDataSymbol]();
+
+                        expect(user2.phone).toBe('[redacted]');
+                    });
+                });
+
                 describe('Delete', () => {
                     test('Delete user1 [.delete()]', async ()=>{
 
