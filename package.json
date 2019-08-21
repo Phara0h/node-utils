@@ -1,13 +1,14 @@
 {
   "name": "@abeai/node-utils",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles --coverage --verbose"
+    "test": "./startTest.sh",
+    "pretest": "./scripts/pretest.sh"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,9 @@
     "uuid": "3.3.2"
   },
   "devDependencies": {
+    "pgtools": "0.3.0",
+    "gulp": "3.9.1",
+    "dotenv": "4.0.0",
     "jest": "^24.8.0",
     "eslint": "5.16.0",
     "eslint-plugin-security": "1.4.0"

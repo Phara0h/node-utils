@@ -7,7 +7,7 @@ describe('Timer', () => {
             var time = new Timer().start();
 
             setTimeout(()=>{
-                expect(time.stop().ms()).toBeGreaterThanOrEqual(100);
+                expect(time.stop().ms()).toBeGreaterThanOrEqual(90);
                 done();
             }, 100);
         });
@@ -17,19 +17,19 @@ describe('Timer', () => {
             var time = new Timer().start();
 
             setTimeout(()=>{
-                expect(time.stop().us()).toBeGreaterThanOrEqual(10000);
+                expect(time.stop().us()).toBeGreaterThanOrEqual(9000);
                 done();
             }, 10);
         });
 
-        test('100000 us', done => {
+        test('10000000 ns', done => {
             var Timer = require('..').Timer;
             var time = new Timer().start();
 
             setTimeout(()=>{
-                expect(time.stop().ns()).toBeGreaterThanOrEqual(1000000);
+                expect(time.stop().ns()).toBeGreaterThanOrEqual(9000000);
                 done();
-            }, 1);
+            }, 10);
         });
     });
 
@@ -39,14 +39,14 @@ describe('Timer', () => {
 
         test('100 ms', done => {
             setTimeout(()=>{
-                expect(time.stop().ms()).toBeGreaterThanOrEqual(100);
+                expect(time.stop().ms()).toBeGreaterThanOrEqual(90);
                 done();
             }, 100);
         });
 
         test('200 ms', done => {
             setTimeout(()=>{
-                expect(time.stop().ms()).toBeGreaterThanOrEqual(200);
+                expect(time.stop().ms()).toBeGreaterThanOrEqual(180);
                 done();
             }, 100);
         });
