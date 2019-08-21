@@ -503,7 +503,7 @@ describe('Postgres', () => {
                         expect(fUser).toEqual(
                             expect.arrayContaining([
                                 expect.objectContaining({
-                                    username: 'user2'
+                                username: 'user3'
                                 }),
                                 expect.objectContaining({
                                     auto_memes: 'memer900'
@@ -526,7 +526,6 @@ describe('Postgres', () => {
                     test('Update user 3 password [.save()]', async ()=>{
                         user3.password = 'password123';
                         user3.save();
-                        console.log(Object.keys(user3))
                         expect(user3).toEqual(expect.objectContaining({
                             password: 'password123'
                         }));
