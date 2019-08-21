@@ -22,7 +22,7 @@ describe('isEmpty', () => {
 
     test('Not Empty Array', () => {
         var isEmpty = require('..').isEmpty;
-        var object = [3,4,5];
+        var object = [3, 4, 5];
 
         expect(isEmpty(object)).toBe(false);
     });
