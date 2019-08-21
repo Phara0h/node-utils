@@ -11,6 +11,7 @@ describe('Postgres', () => {
     try {
         pgOptions.crypto = require('@abeai/node-crypto').utils.pgCrypto;
     } catch (_) {
+      console.log(_)
     }
 
     var pg = new PGConnecter(pgOptions);
@@ -418,7 +419,11 @@ describe('Postgres', () => {
                 });
 
                 test('Create user 4 with 5 properties static with encrypt field phone, hashed password and and set encrypted_profile with encryption off [create()]', async ()=>{
-
+                  try {
+                      pgOptions.crypto = null;
+                      pg = new PGConnecter(pgOptions);
+                  } catch (_) {
+                  }
                     user4 = await UserAD.create(
                         {
                             username: 'user4',
@@ -431,10 +436,15 @@ describe('Postgres', () => {
                         hashed_password: 'hashmebro',
                         phone: '1231231234'
                     }));
-
+                    try {
+                        pgOptions.crypto = require('@abeai/node-crypto').utils.pgCrypto;
+                        pg = new PGConnecter(pgOptions);
+                    } catch (_) {
+                    }
                 });
 
                 test('Create user 5 with 3 properties Instantiate with auto crypt property and auto crypt without hash property [.create()]', async ()=>{
+
                     user5 = new UserAD({
                         username: 'user5',
                         memes: 'awkward penguin',
