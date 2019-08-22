@@ -2,8 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.1.0 - 08/12/2019
 
-## 2.5.0 - 07/15/2019
+-   Added redaction logic. [ENG-996](https://abedev.atlassian.net/browse/ENG-996)
+
+## 2.0.0 - 07/15/2019
 
 -   Added tests, and major changes to postgres [ENG-975](https://abedev.atlassian.net/browse/ENG-975)
 

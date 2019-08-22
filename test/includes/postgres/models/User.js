@@ -1,17 +1,17 @@
+'use strict';
 
 const BaseModel = require('../../../../lib/postgres/PGBaseModel.js');
 const Base = require('../../../../lib/postgres/Base.js');
 const PGTypes = require('../../../../lib/postgres/PGTypes.js');
 
-class User extends Base(BaseModel, 'users',
-    {
-        id: PGTypes.PK,
-        username: null,
-        password: null,
-        email: null,
-        created_on: null,
-        last_login: null,
-    }) {
+class User extends Base(BaseModel, 'users', {
+    id: PGTypes.PK,
+    username: null,
+    password: null,
+    email: null,
+    created_on: null,
+    last_login: null,
+}) {
 
     constructor() {
         super();

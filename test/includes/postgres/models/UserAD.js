@@ -1,18 +1,25 @@
+'use strict';
 
 const BaseModel = require('../../../../lib/postgres/PGActiveModel.js');
 const Base = require('../../../../lib/postgres/Base.js');
 const PGTypes = require('../../../../lib/postgres/PGTypes.js');
 
 class User extends Base(BaseModel, 'users', {
-      id: PGTypes.PK,
-      username: null,
-      password: null,
-      email: null,
-      created_on: null,
-      last_login: null,
-  }) {
-    constructor(setUser) {
-      super(setUser);
+    id: PGTypes.PK,
+    username: null,
+    password: null,
+    encrypted_profile: PGTypes.EncryptProfile,
+    hashed_password: PGTypes.Hash,
+    phone: PGTypes.Encrypt,
+    auto_phone: PGTypes.AutoCrypt,
+    memes: PGTypes.EncryptWithoutHash,
+    auto_memes: PGTypes.AutoCryptWithoutHash,
+    email: null,
+    created_on: null,
+    last_login: null,
+}) {
+    constructor(...args) {
+        super(...args);
     }
 
     static async createUserWithRandomName(model) {
