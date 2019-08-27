@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.0 - 08/27/2019
+
+-   Use `http.globalAgent` if `request` `options.keepAlive` is `false`. [ENG-1051](https://abedev.atlassian.net/browse/ENG-1051)
+
+## 3.0.0 - 08/20/2019
+
+-   Added encryption capabilities to PG's active model [ENG-999](https://abedev.atlassian.net/browse/ENG-999)
+
 ## 2.1.0 - 08/12/2019
 
 -   Added redaction logic. [ENG-996](https://abedev.atlassian.net/browse/ENG-996)
