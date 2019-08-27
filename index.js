@@ -25,7 +25,7 @@ var nodeUtils = function() {
 
     this.redaction = require('./lib/redaction');
 
-    this.addHSTSHeader = require('./lib/hsts');
+    this.defaultPublicServiceHeaders = require('./lib/defaultPublicServiceHeaders');
 
     return this;
 }();
