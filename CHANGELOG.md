@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## 3.1.0 - 08/27/2019
 
 -   Use `http.globalAgent` if `request` `options.keepAlive` is `false`. [ENG-1051](https://abedev.atlassian.net/browse/ENG-1051)
+-   Added `defaultPublicServiceHeaders` middleware. [ENG-1045](https://abedev.atlassian.net/browse/ENG-1045)
 
 ## 3.0.0 - 08/20/2019
 
