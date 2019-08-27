@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.2.0 - 08/27/2019
+
+-   Use `http.globalAgent` if `request` `options.keepAlive` is `false`. [ENG-1051](https://abedev.atlassian.net/browse/ENG-1051)
+
 ## 2.1.0 - 08/12/2019
 
 -   Added redaction logic. [ENG-996](https://abedev.atlassian.net/browse/ENG-996)
