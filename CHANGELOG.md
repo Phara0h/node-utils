@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.1 - 09/26/2019
+
+-   Fixed bug with bug with Request if response JSON can't be parsed. [ENG-1086](https://abedev.atlassian.net/browse/ENG-1086)
+
 ## 3.1.0 - 08/27/2019
 
 -   Use `http.globalAgent` if `request` `options.keepAlive` is `false`. [ENG-1051](https://abedev.atlassian.net/browse/ENG-1051)
