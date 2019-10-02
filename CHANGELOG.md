@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 
 
 
-## 3.2.0 - Un-released
+## 3.2.0 - 10/02/2019
 
 -   Fix active model on new to assign copies instead of pointers to fields. [ENG-1090](https://abedev.atlassian.net/browse/ENG-1090)
 -   
