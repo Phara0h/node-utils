@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.2 - 10/02/2019
+
+-   Fix active model on new to assign copies instead of pointers to fields. [ENG-1090](https://abedev.atlassian.net/browse/ENG-1090)
+
 ## 3.1.1 - 09/26/2019
 
 -   Fixed bug with bug with Request if response JSON can't be parsed. [ENG-1086](https://abedev.atlassian.net/browse/ENG-1086)
