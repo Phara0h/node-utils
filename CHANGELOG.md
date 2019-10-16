@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 ##### Engineering Internal
 
--   
+-   Update to eslint 6.5.1 to resolve a secuirty vulnerability.
 
 ##### Deployment Action Items
 
