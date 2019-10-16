@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 3.3.0 - Un-released
+## 3.3.0 - 10/16/2019
 
 -   
 
