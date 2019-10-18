@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ## 3.3.0 - Un-released
 
--   
+-   Update node-utils to include redirects and auth options  [ENG-1114](https://abedev.atlassian.net/browse/ENG-1114)
 
 ##### Engineering Internal
 
