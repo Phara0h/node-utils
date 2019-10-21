@@ -26,11 +26,12 @@
     "uuid": "3.3.2"
   },
   "devDependencies": {
-    "pgtools": "0.3.0",
-    "gulp": "3.9.1",
+    "@abeai/recho": "^1.4.0",
     "dotenv": "4.0.0",
-    "jest": "^24.8.0",
     "eslint": "6.5.1",
-    "eslint-plugin-security": "1.4.0"
+    "eslint-plugin-security": "1.4.0",
+    "gulp": "3.9.1",
+    "jest": "^24.8.0",
+    "pgtools": "0.3.0"
   }
 }

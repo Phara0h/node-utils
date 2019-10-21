@@ -3,9 +3,11 @@ const {request} = require('..');
 describe('Request', () => {
     var server;
 
-    test('Start Test Server', async ()=>{
+    beforeAll(async () => {
         server = require('@abeai/recho')({ip: '0.0.0.0',
-            port: 4261});
+            port: 4261,
+            log: false
+        });
         var p = new Promise((resolve, reject)=>{
             setTimeout(()=>{
                 resolve();
@@ -13,15 +15,14 @@ describe('Request', () => {
         });
 
         await p;
-
-        expect(1).toEqual(1);
     });
+
     test('ECCONRESET Invalid', async () => {
         //  expect.assertions(1);
         expect(request({
             uri: 'http://127.0.0.1:4261/econnreset',
             simple: false,
-            retryReset: true
+            retryConnReset: true
         })).rejects.toBeDefined();
     });
 
@@ -30,7 +31,7 @@ describe('Request', () => {
         var res = await request({
             uri: 'http://127.0.0.1:4261/econnreset/flipflop',
             simple: false,
-            retryReset: true,
+            retryConnReset: true,
             resolveWithFullResponse: true
         });
 
@@ -43,20 +44,75 @@ describe('Request', () => {
         var res = await request({
             uri: 'http://127.0.0.1:4261/redirect?url=' + encodeURI('http://127.0.0.1:4261/redirected'),
             simple: false,
-            retryReset: true,
             resolveWithFullResponse: true
         });
 
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toEqual({body: null,
-            query: {},
-            params: {param1: 'redirected'},
-            url: '/redirected',
-            method: 'GET',
-            headers: {host: '127.0.0.1:4261', connection: 'keep-alive'},
-            id: 6,
-            ip: '127.0.0.1',
-            hostname: '127.0.0.1:4261'});
+        expect(res.body).toMatchObject(
+            {
+                url: '/redirected',
+                method: 'GET',
+            });
 
     });
+
+    test('Redirect Infinity Test [Stop after 5]', async () => {
+
+        var res = await request({
+            uri: 'http://127.0.0.1:4261/redirect/loop/0',
+            simple: false,
+            resolveWithFullResponse: true
+        });
+
+        expect(res.statusCode).toEqual(302);
+        expect(res.req.path).toEqual('/redirect/loop/5');
+
+    });
+
+    test('Basic Auth', async () => {
+
+        var res = await request({
+            uri: 'http://127.0.0.1:4261/auth/',
+            simple: false,
+            resolveWithFullResponse: true,
+            authorization: {basic: {client: 'test', secret: 'test'}}
+        });
+
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toMatchObject(
+            {
+                url: '/auth/',
+                method: 'GET',
+                headers: {
+                    authorization: 'Basic dGVzdDp0ZXN0',
+                    host: '127.0.0.1:4261',
+                    connection: 'keep-alive'
+                },
+            });
+
+    });
+
+    test('Bearer Auth', async () => {
+
+        var res = await request({
+            uri: 'http://127.0.0.1:4261/auth/',
+            simple: false,
+            resolveWithFullResponse: true,
+            authorization: {bearer: 'xxx'}
+        });
+
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toMatchObject(
+            {
+                url: '/auth/',
+                method: 'GET',
+                headers: {
+                    authorization: 'Bearer xxx',
+                    host: '127.0.0.1:4261',
+                    connection: 'keep-alive'
+                },
+            });
+
+    });
+
 });
