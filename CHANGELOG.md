@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 
 
 
-## 3.4.0 - Un-released
+## 3.4.0 - 10/21/2019
 
 -   
 
