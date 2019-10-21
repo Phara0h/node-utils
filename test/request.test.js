@@ -56,7 +56,7 @@ describe('Request', () => {
 
     });
 
-    test('Redirect Infinity Test [Stop after 5]', async () => {
+    test('Redirect Infinity Test [Stop after default 5]', async () => {
 
         var res = await request({
             uri: 'http://127.0.0.1:4261/redirect/loop/0',
@@ -66,6 +66,20 @@ describe('Request', () => {
 
         expect(res.statusCode).toEqual(302);
         expect(res.req.path).toEqual('/redirect/loop/5');
+
+    });
+
+    test('Redirect Infinity Test [Stop after 2]', async () => {
+
+        var res = await request({
+            uri: 'http://127.0.0.1:4261/redirect/loop/0',
+            simple: false,
+            resolveWithFullResponse: true,
+            redirectMax: 2
+        });
+
+        expect(res.statusCode).toEqual(302);
+        expect(res.req.path).toEqual('/redirect/loop/2');
 
     });
 
