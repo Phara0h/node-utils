@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "./startTest.sh",
-    "pretest": "./scripts/pretest.sh"
+    "pretest": "./scripts/pretest.sh",
+    "benchmark": "node benchmark/benchmark.js"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,13 @@
   },
   "devDependencies": {
     "@abeai/recho": "^1.4.0",
+    "benny": "^3.6.14",
     "dotenv": "4.0.0",
     "eslint": "6.5.1",
     "eslint-plugin-security": "1.4.0",
     "gulp": "3.9.1",
     "jest": "^24.8.0",
+    "lodash": "^4.17.15",
     "pgtools": "0.3.0"
   }
 }
