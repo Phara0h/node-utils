@@ -3,12 +3,14 @@ var nodeUtils = function() {
 
     this.cloneDeepWith = _clone.cloneDeepWith;
     this.cloneDeep = _clone.cloneDeep;
-    this.clone = _clone.clone;
+    this.clone = Object.assign;
 
     this.merge = _clone.merge;
 
     this.get = require('./lib/get');
+    this.set = require('./lib/set');
     this.isEmpty = require('./lib/isEmpty');
+    this.mapKeys = require('./lib/mapKeys');
 
     this.PGTypes = require('./lib/postgres/PGTypes');
     this.PGConnecter = require('./lib/postgres/PGConnecter');
