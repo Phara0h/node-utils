@@ -25,8 +25,14 @@ const start = async () => {
     // Bench Suites
     parseResults(await require('./suites/get-lodash.bench.js'));
     parseResults(await require('./suites/set-lodash.bench.js'));
+    parseResults(await require('./suites/isObject-lodash.bench.js'));
+    parseResults(await require('./suites/snakeCase-lodash.bench.js'));
+    parseResults(await require('./suites/camelCase-lodash.bench.js'));
+    parseResults(await require('./suites/kebabCase-lodash.bench.js'));
     parseResults(await require('./suites/mapKeys-lodash.bench.js'));
     parseResults(await require('./suites/mapKeys-altmap.bench.js'));
+    parseResults(await require('./suites/forEach-lodash.bench.js'));
+    parseResults(await require('./suites/debounce-lodash.bench.js'));
     parseResults(await require('./suites/clone-lodash.bench.js'));
     parseResults(await require('./suites/cloneDeep-lodash.bench.js'));
     parseResults(await require('./suites/request-RequestPromise.bench.js'));
@@ -42,8 +48,8 @@ function parseResults(res) {
     var nodeUtilsPercent = ((res.results[1].ops / res.results[0].ops) * 100);
     var oldPercent = ((res.results[0].ops / res.results[1].ops) * 100);
 
-    var nodeUtilsPercentString = nodeUtilsPercent > oldPercent ? colors.green('+' + nodeUtilsPercent.toFixed(2) + '%') : colors.red('x' + (oldPercent / 100).toFixed(2) + ' slower');
-    var oldPercentString = oldPercent > nodeUtilsPercent ? colors.green('+' + oldPercent.toFixed(2) + '%') : colors.red('x' + (nodeUtilsPercent / 100).toFixed(2) + ' slower');
+    var nodeUtilsPercentString = nodeUtilsPercent > oldPercent ? colors.green('+' + (nodeUtilsPercent - 100).toFixed(2) + '%') : colors.red('x' + (oldPercent / 100).toFixed(2) + ' slower');
+    var oldPercentString = oldPercent > nodeUtilsPercent ? colors.green('+' + (oldPercent - 100).toFixed(2) + '%') : colors.red('x' + (nodeUtilsPercent / 100).toFixed(2) + ' slower');
 
     var newRes = [colors.magenta(res.name), colors.cyan(res.results[1].ops + ' ops/s') + ' | ' + nodeUtilsPercentString, colors.cyan(res.results[0].ops + ' ops/s') + ' | ' + oldPercentString];
 

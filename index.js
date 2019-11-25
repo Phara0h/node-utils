@@ -10,7 +10,14 @@ var nodeUtils = function() {
     this.get = require('./lib/get');
     this.set = require('./lib/set');
     this.isEmpty = require('./lib/isEmpty');
+    this.isArray = require('./lib/isObject');
+    this.isObject = require('./lib/isArray');
     this.mapKeys = require('./lib/mapKeys');
+    this.forEach = require('./lib/forEach');
+    this.snakeCase = require('./lib/snakeCase');
+    this.camelCase = require('./lib/camelCase');
+    this.kebabCase = require('./lib/kebabCase');
+    this.debounce = require('./lib/debounce');
 
     this.PGTypes = require('./lib/postgres/PGTypes');
     this.PGConnecter = require('./lib/postgres/PGConnecter');
@@ -21,7 +28,7 @@ var nodeUtils = function() {
 
     this.request = require('./lib/request');
 
-    this.keysToCamel = require('./lib/camelCase');
+    this.keysToCamel = require('./lib/keysToCamel');
 
     this.Timer = require('./lib/timer');
 
