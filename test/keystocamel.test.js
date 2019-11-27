@@ -8,7 +8,7 @@ describe('keysToCamel', () => {
             }
         };
 
-        expect(keysToCamel(testObj).testMemes.fooBar).toBe(69);
+        expect(keysToCamel(testObj)).toEqual({testMemes: {fooBar: 69}});
     });
 
     test('dashcase (-)', () => {
@@ -19,6 +19,6 @@ describe('keysToCamel', () => {
             }
         };
 
-        expect(keysToCamel(testObj).testMemes.fooBar).toBe(69);
+        expect(keysToCamel(testObj)).toEqual({testMemes: {fooBar: 69}});
     });
 });
