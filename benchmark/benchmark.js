@@ -25,6 +25,7 @@ const start = async () => {
     // Bench Suites
     parseResults(await require('./suites/get-lodash.bench.js'));
     parseResults(await require('./suites/set-lodash.bench.js'));
+    parseResults(await require('./suites/toPath-lodash.bench.js'));
     parseResults(await require('./suites/isObject-lodash.bench.js'));
     parseResults(await require('./suites/snakeCase-lodash.bench.js'));
     parseResults(await require('./suites/camelCase-lodash.bench.js'));

@@ -9,7 +9,8 @@
   "scripts": {
     "test": "./startTest.sh",
     "pretest": "./scripts/pretest.sh",
-    "benchmark": "node benchmark/benchmark.js"
+    "benchmark": "node benchmark/benchmark.js",
+    "docs": "jsdoc2md --template README.hbs ./lib/* > README.md"
   },
   "repository": {
     "type": "git",

@@ -9,6 +9,7 @@ var nodeUtils = function() {
 
     this.get = require('./lib/get');
     this.set = require('./lib/set');
+    this.toPath = require('./lib/toPath');
     this.isEmpty = require('./lib/isEmpty');
     this.isArray = require('./lib/isObject');
     this.isObject = require('./lib/isArray');
