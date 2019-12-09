@@ -260,6 +260,7 @@ Postgres Active Model class to extend a custom model from.
         * [.deleteById(id)](#PGActiveModel.deleteById) ⇒ [<code>PGActiveModel</code>](#PGActiveModel)
         * [.deleteLimitedBy(fieldValues, operator, limit)](#PGActiveModel.deleteLimitedBy) ⇒ [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel)
         * [.deleteAllBy(fieldValues, operator)](#PGActiveModel.deleteAllBy) ⇒ [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel)
+        * [.deleteAll()](#PGActiveModel.deleteAll) ⇒ [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel)
         * [.updateById(id, model, returnModel)](#PGActiveModel.updateById) ⇒ [<code>PGActiveModel</code>](#PGActiveModel)
         * [.updateLimitedBy(fieldValues, model, operator, returnModel, limit)](#PGActiveModel.updateLimitedBy) ⇒ [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel)
         * [.updateAllBy(fieldValues, model, operator, returnModel)](#PGActiveModel.updateAllBy) ⇒ [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel)
@@ -485,6 +486,13 @@ deleteAllBy({
       registered: true,
    });
 ```
+<a name="PGActiveModel.deleteAll"></a>
+
+### PGActiveModel.deleteAll() ⇒ [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel)
+Deletes all models in their table.
+
+**Kind**: static method of [<code>PGActiveModel</code>](#PGActiveModel)  
+**Returns**: [<code>Array.&lt;PGActiveModel&gt;</code>](#PGActiveModel) - Returns an array of deleted models or null  
 <a name="PGActiveModel.updateById"></a>
 
 ### PGActiveModel.updateById(id, model, returnModel) ⇒ [<code>PGActiveModel</code>](#PGActiveModel)
