@@ -1,11 +1,10 @@
 var nodeUtils = function() {
     var _clone = require('./lib/clone');
 
+    this.merge = _clone.merge;
     this.cloneDeepWith = _clone.cloneDeepWith;
     this.cloneDeep = _clone.cloneDeep;
-    this.clone = Object.assign;
-
-    this.merge = _clone.merge;
+    this.clone = _clone.clone;
 
     this.get = require('./lib/get');
     this.set = require('./lib/set');

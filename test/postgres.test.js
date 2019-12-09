@@ -346,9 +346,12 @@ describe('Postgres', () => {
         });
         describe('Delete', () => {
             test('Delete user1 [.delete()]', async ()=>{
+                var id = user1.id;
 
                 await user1.delete();
+                var deletedUser = await UserAD.findById(id);
 
+                expect(deletedUser).toBe(null);
                 expect(user1.username).toBe(null);
             });
 
@@ -588,9 +591,12 @@ describe('Postgres', () => {
 
             describe('Delete', () => {
                 test('Delete user1 [.delete()]', async ()=>{
+                    var id = user1.id;
 
                     await user1.delete();
+                    var deletedUser = await UserAD.findById(id);
 
+                    expect(deletedUser).toBe(null);
                     expect(user1.username).toBe(null);
                 });
 
@@ -601,6 +607,15 @@ describe('Postgres', () => {
                         });
 
                     expect(deletedUsers[0].email).toBe('motherlover@lel.com');
+                });
+
+                test('Delete user2 [.deleteById()]', async ()=>{
+                    var id = user2.id;
+
+                    await UserAD.deleteById(id);
+                    var deletedUser = await UserAD.findById(id);
+
+                    expect(deletedUser).toBe(null);
                 });
 
                 test('Delete All static [deleteAll()]', async ()=>{
