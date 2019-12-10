@@ -10,7 +10,6 @@ var nodeUtils = function() {
     this.set = require('./lib/set');
     this.toPath = require('./lib/toPath');
     this.isEmpty = require('./lib/isEmpty');
-    this.isArray = require('./lib/isArray');
     this.isObject = require('./lib/isObject');
     this.mapKeys = require('./lib/mapKeys');
     this.forEach = require('./lib/forEach');

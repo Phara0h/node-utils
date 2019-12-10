@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## 3.5.0 - Un-released
 
--   
+- Added set, toPath, isObject, mapKeys, forEach, snakeCase, camelCase, kebabCase, keysToCamel and debounce functions. Added Benchmarks, Documents and Tests for new functions. [ENG-1118](https://abedev.atlassian.net/browse/ENG-1118)
 
 ##### Engineering Internal
 

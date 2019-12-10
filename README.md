@@ -77,10 +77,6 @@ MacBook Pro (15-inch, 2018) v10.15 (19A603)
 <dt><a href="#camelCase">camelCase(str)</a> ⇒ <code>String</code></dt>
 <dd><p>Converts <code>string</code> to <a href="https://en.wikipedia.org/wiki/CamelCase">camel case</a>.</p>
 </dd>
-<dt><a href="#clone">clone(value)</a> ⇒ <code>*</code></dt>
-<dd><p>Creates a shallow clone of <code>value</code>.</p>
-<p><strong>Note:</strong> Is just <code>Object.assign</code>, please use that instead of this.</p>
-</dd>
 <dt><a href="#cloneDeep">cloneDeep(value)</a> ⇒ <code>*</code></dt>
 <dd><p>This method is like <code>clone</code> except that it recursively clones <code>value</code>.</p>
 </dd>
@@ -123,9 +119,6 @@ Iteratee functions may exit iteration early by explicitly returning <code>false<
 <dt><a href="#get">get(object, path, [defaultReturn])</a> ⇒ <code>*</code></dt>
 <dd><p>Gets the value at <code>path</code> of <code>object</code>. If the resolved value is
 <code>undefined</code>, the <code>defaultValue</code> is returned in its place.</p>
-</dd>
-<dt><a href="#isArray">isArray(value)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Checks if <code>value</code> is classified as an <code>Array</code> object.</p>
 </dd>
 <dt><a href="#isEmpty">isEmpty(value)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Checks if <code>value</code> is an empty object or array</p>
@@ -730,28 +723,6 @@ camelCase('--foo-bar--');
 camelCase('__FOO_BAR__');
 // => 'fooBar'
 ```
-<a name="clone"></a>
-
-## clone(value) ⇒ <code>\*</code>
-Creates a shallow clone of `value`.
-
-**Note:** Is just `Object.assign`, please use that instead of this.
-
-**Kind**: global function  
-**Returns**: <code>\*</code> - Returns the cloned value.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>\*</code> | The value to clone. |
-
-**Example**  
-```js
-var objects = [{ 'a': 1 }, { 'b': 2 }];
-
-var shallow = lodashClone(objects);
-console.log(shallow[0] === objects[0]);
-// => true
-```
 <a name="cloneDeep"></a>
 
 ## cloneDeep(value) ⇒ <code>\*</code>
@@ -937,32 +908,6 @@ get(object, 'a[0].b.c');
 
 get(object, ['a', '0', 'b', 'c']);
 // => 3
-```
-<a name="isArray"></a>
-
-## isArray(value) ⇒ <code>Boolean</code>
-Checks if `value` is classified as an `Array` object.
-
-**Kind**: global function  
-**Returns**: <code>Boolean</code> - Returns `true` if `value` is an array, else `false`.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>\*</code> | The value to check. |
-
-**Example**  
-```js
-isArray([1, 2, 3]);
-// => true
-
-isArray(document.body.children);
-// => false
-
-isArray('abc');
-// => false
-
-isArray(_.noop);
-// => false
 ```
 <a name="isEmpty"></a>
 

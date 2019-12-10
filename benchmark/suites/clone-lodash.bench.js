@@ -12,7 +12,7 @@ module.exports = suite(
     }),
 
     add('Node-Utils', () => {
-        clone(objects);
+        Object.assign(objects);
     }),
 
     cycle(),
