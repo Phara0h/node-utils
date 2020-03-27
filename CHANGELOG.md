@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## 3.4.0 - 10/21/2019
+
+-   
+
+##### Engineering Internal
+
+-   
+
+##### Deployment Action Items
+
+-   
+
+
+## 3.3.0 - 10/16/2019
+
+-   Update node-utils to include redirects and auth options  [ENG-1114](https://abedev.atlassian.net/browse/ENG-1114)
+
+##### Engineering Internal
+
+-   Update to eslint 6.5.1 to resolve a secuirty vulnerability.
+
+##### Deployment Action Items
+
+-   
+
+
+
+## 3.2.0 - 10/02/2019
+
+-   Fix active model on new to assign copies instead of pointers to fields. [ENG-1090](https://abedev.atlassian.net/browse/ENG-1090)
+-   
+
+##### Engineering Internal
+
+-   
+
+##### Deployment Action Items
+
+-   
+
+## 3.1.1 - 09/26/2019
+
+-   Fixed bug with bug with Request if response JSON can't be parsed. [ENG-1086](https://abedev.atlassian.net/browse/ENG-1086)
+
+## 3.1.0 - 08/27/2019
+
+-   Use `http.globalAgent` if `request` `options.keepAlive` is `false`. [ENG-1051](https://abedev.atlassian.net/browse/ENG-1051)
+-   Added `defaultPublicServiceHeaders` middleware. [ENG-1045](https://abedev.atlassian.net/browse/ENG-1045)
+
+## 3.0.0 - 08/20/2019
+
+-   Added encryption capabilities to PG's active model [ENG-999](https://abedev.atlassian.net/browse/ENG-999)
+
 ## 2.1.0 - 08/12/2019
 
 -   Added redaction logic. [ENG-996](https://abedev.atlassian.net/browse/ENG-996)

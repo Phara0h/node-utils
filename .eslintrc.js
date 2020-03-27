@@ -9,10 +9,7 @@ module.exports = {
     // http://eslint.org/docs/rules/
 
     'parserOptions': {
-        'ecmaVersion': 8,
-        ecmaFeatures: {
-            experimentalObjectRestSpread: true,
-        },
+        'ecmaVersion': 9,
     },
 
     'env': {
