@@ -43,7 +43,7 @@
     "dotenv": "4.0.0",
     "eslint": "6.5.1",
     "eslint-plugin-security": "1.4.0",
-    "fastify": "3.9.1",
+    "fastify": "2.15.1",
     "gulp": "3.9.1",
     "jest": "^24.8.0",
     "lodash": "^4.17.15",
