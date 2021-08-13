@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.8.0 - 01/14/2021
 
-## 3.4.0 - 10/21/2019
-
--   
+-   Fixed `camelCase` to respect already camel case strings. [ENG-1209](https://abedev.atlassian.net/browse/ENG-1209)
+-   Fixed `isObject` to return `false` for `null`. [ENG-1209](https://abedev.atlassian.net/browse/ENG-1209)
+-   Changed `keysToCamel` to not be recursive by default. [ENG-1209](https://abedev.atlassian.net/browse/ENG-1209)
 
 ##### Engineering Internal
 
@@ -15,6 +16,32 @@ All notable changes to this project will be documented in this file.
 
 -   
 
+## 3.7.0 - 12/17/2020
+
+-   Fixed broken imports for `keysToCamel`. [ENG-1205](https://abedev.atlassian.net/browse/ENG-1205)
+
+##### Engineering Internal
+
+-   
+
+##### Deployment Action Items
+
+-   
+
+## 3.6.0 - 12/15/2020
+
+-   Fixed missed refactor of `isArray`. [ENG-1118](https://abedev.atlassian.net/browse/ENG-1118)
+-   `request`
+    -   Added retry logic on `ECONNRESET`. [OPS-723](https://abedev.atlassian.net/browse/OPS-723)
+    -   Added `timeout` option. [PLAT-738](https://abedev.atlassian.net/browse/PLAT-738)
+
+## 3.5.0 - 06/29/2020
+
+-   Added `set`, `toPath`, `isObject`, `mapKeys`, `forEach`, `snakeCase`, `camelCase`, `kebabCase`, `keysToCamel` and `debounce` functions.
+-   Removed `clone` and `isArray` functions. [ENG-1118](https://abedev.atlassian.net/browse/ENG-1118)
+-   Added benchmarks, documents and tests for new functions. [ENG-1118](https://abedev.atlassian.net/browse/ENG-1118)
+
+## 3.4.0 - 10/21/2019
 
 ## 3.3.0 - 10/16/2019
 
@@ -24,24 +51,9 @@ All notable changes to this project will be documented in this file.
 
 -   Update to eslint 6.5.1 to resolve a secuirty vulnerability.
 
-##### Deployment Action Items
-
--   
-
-
-
 ## 3.2.0 - 10/02/2019
 
 -   Fix active model on new to assign copies instead of pointers to fields. [ENG-1090](https://abedev.atlassian.net/browse/ENG-1090)
--   
-
-##### Engineering Internal
-
--   
-
-##### Deployment Action Items
-
--   
 
 ## 3.1.1 - 09/26/2019
 

@@ -1,37 +1,73 @@
 {
-  "name": "@abeai/node-utils",
-  "version": "3.4.0",
+  "_from": "@abeai/node-utils",
+  "_id": "@abeai/node-utils@3.8.0",
+  "_inBundle": false,
+  "_integrity": "sha512-/hZytE4FpYpfk00e4Eai3ZeaxG1Slp8mF+01UcCh8nF8w3b5oZi3Zc0/DoK0IEaCMbsA7sJzFWF1Ce5354neAg==",
+  "_location": "/@abeai/node-utils",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@abeai/node-utils",
+    "name": "@abeai/node-utils",
+    "escapedName": "@abeai%2fnode-utils",
+    "scope": "@abeai",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@abeai/node-utils/-/node-utils-3.8.0.tgz",
+  "_shasum": "a34062f359c716a5d5a82d7a254ad6c3f3c61cfa",
+  "_spec": "@abeai/node-utils",
+  "_where": "/Users/jtwhissel/Documents/checkpeople",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/abeai/node-utils/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "pg": "7.11.0",
+    "pg-native": "3.0.0"
+  },
+  "deprecated": false,
   "description": "",
-  "main": "index.js",
+  "devDependencies": {
+    "@abeai/recho": "^1.4.0",
+    "benny": "^3.6.14",
+    "cli-table": "^0.3.1",
+    "colors": "^1.4.0",
+    "dotenv": "4.0.0",
+    "eslint": "6.5.1",
+    "eslint-plugin-security": "1.4.0",
+    "fastify": "3.9.1",
+    "gulp": "3.9.1",
+    "jest": "^24.8.0",
+    "lodash": "^4.17.15",
+    "pgtools": "0.3.0",
+    "request-promise": "^4.2.5",
+    "uuid": "3.3.2"
+  },
   "directories": {
     "lib": "lib"
   },
-  "scripts": {
-    "test": "./startTest.sh",
-    "pretest": "./scripts/pretest.sh"
-  },
+  "homepage": "https://github.com/abeai/node-utils#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "@abeai/node-utils",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abeai/node-utils.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abeai/node-utils/issues"
+  "scripts": {
+    "benchmark": "node benchmark/benchmark.js",
+    "docs": "jsdoc2md --template README.hbs -f ./lib/* -f ./lib/postgres/* > README.md",
+    "pretest": "./scripts/pretest.sh",
+    "test": "./startTest.sh",
+    "test-request": "jest --verbose \"test\\/request\\.test\\.js|spec\\/request\\/.*\\.spec\\.js\""
   },
-  "homepage": "https://github.com/abeai/node-utils#readme",
-  "dependencies": {
-    "pg": "7.11.0",
-    "pg-native": "3.0.0",
-    "uuid": "3.3.2"
-  },
-  "devDependencies": {
-    "@abeai/recho": "^1.4.0",
-    "dotenv": "4.0.0",
-    "eslint": "6.5.1",
-    "eslint-plugin-security": "1.4.0",
-    "gulp": "3.9.1",
-    "jest": "^24.8.0",
-    "pgtools": "0.3.0"
-  }
+  "version": "3.8.0"
 }

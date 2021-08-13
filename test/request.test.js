@@ -17,28 +17,6 @@ describe('Request', () => {
         await p;
     });
 
-    test('ECCONRESET Invalid', async () => {
-        //  expect.assertions(1);
-        expect(request({
-            uri: 'http://127.0.0.1:4261/econnreset',
-            simple: false,
-            retryConnReset: true
-        })).rejects.toBeDefined();
-    });
-
-    test('ECCONRESET', async () => {
-
-        var res = await request({
-            uri: 'http://127.0.0.1:4261/econnreset/flipflop',
-            simple: false,
-            retryConnReset: true,
-            resolveWithFullResponse: true
-        });
-
-        expect(res.statusCode).toEqual(200);
-
-    });
-
     test('Redirect', async () => {
 
         var res = await request({
